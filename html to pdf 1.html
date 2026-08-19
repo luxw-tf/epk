@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SANAKPAAR - Electronic Press Kit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@600;800&display=swap');
+
+  :root{
+    --ink:#EDE7DC;
+    --ink-dim:#B7ADA0;
+    --bg-0:#121110;
+    --bg-1:#181614;
+    --bg-2:#1F1B18;
+    --crimson:#FF3B1F;
+    --gold:#C9992E;
+    --line: rgba(237,231,220,0.14);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-0);
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(255,59,31,0.06), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(201,153,46,0.05), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 3px);
+    pointer-events:none;
+    z-index:1;
+    opacity:0.5;
+  }
+
+  .wrap{position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  .eyebrow{
+    font-family:'Archivo', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.22em;
+    font-size:12px;
+    font-weight:700;
+    color:var(--gold);
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,17,16,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .nav-mark{font-family:'Anton'; font-size:20px; letter-spacing:0.04em;}
+  .nav-links{display:flex; gap:28px; list-style:none;}
+  .nav-links a{color:var(--ink-dim); text-decoration:none; font-size:13px; text-transform:uppercase; letter-spacing:0.12em; font-weight:600; transition:color 0.2s;}
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--crimson);}
+  @media(max-width:640px){.nav-links{gap:16px;} .nav-links a{font-size:11px;}}
+
+  /* ===== HERO ===== */
+  header.hero{
+    position:relative;
+    padding:120px 0 90px;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .devanagari-mark{
+    position:absolute;
+    right:-40px; top:-30px;
+    font-family:'Noto Sans Devanagari';
+    font-weight:800;
+    font-size:340px;
+    color:rgba(255,59,31,0.05);
+    line-height:1;
+    pointer-events:none;
+    user-select:none;
+  }
+  .hero-inner{position:relative; z-index:2;}
+  .crossbar{
+    display:flex; align-items:center; gap:14px; margin-bottom:26px;
+  }
+  .crossbar .rule{height:1px; flex:1; background:var(--line);}
+
+  h1.wordmark{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(64px, 12vw, 148px);
+    line-height:0.86;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  h1.wordmark .hit{color:var(--crimson);}
+
+  .hero-sub{
+    margin-top:22px;
+    max-width:560px;
+    font-size:17px;
+    line-height:1.65;
+    color:var(--ink-dim);
+  }
+
+  .genre-tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:28px;}
+  .tag{
+    border:1px solid var(--line);
+    padding:7px 14px;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    font-weight:600;
+    color:var(--ink-dim);
+    border-radius:2px;
+  }
+  .tag.on{border-color:var(--crimson); color:var(--crimson);}
+
+  .hero-cta{display:flex; gap:14px; margin-top:40px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 26px;
+    font-family:'Archivo'; font-weight:700; font-size:13px;
+    text-transform:uppercase; letter-spacing:0.1em;
+    text-decoration:none;
+    border-radius:2px;
+    transition:transform 0.15s ease, background 0.2s;
+  }
+  .btn-solid{background:var(--crimson); color:#161110;}
+  .btn-solid:hover{transform:translateY(-2px);}
+  .btn-outline{border:1px solid var(--line); color:var(--ink);}
+  .btn-outline:hover{border-color:var(--gold); color:var(--gold); transform:translateY(-2px);}
+
+  /* ===== SECTION LABELS ===== */
+  .section{padding:88px 0; border-bottom:1px solid var(--line); position:relative; z-index:2;}
+  .section-head{display:flex; align-items:baseline; gap:18px; margin-bottom:44px; flex-wrap:wrap;}
+  .section-head h2{
+    font-family:'Anton'; font-size:clamp(34px,5vw,52px); text-transform:uppercase; letter-spacing:-0.01em;
+  }
+  .section-head .rule{height:1px; flex:1; min-width:40px; background:var(--line);}
+
+  /* ===== BIO ===== */
+  .bio-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px;}
+  @media(max-width:860px){.bio-grid{grid-template-columns:1fr;}}
+  .bio-text p{font-size:16px; line-height:1.85; color:var(--ink-dim); margin-bottom:18px;}
+  .bio-text p strong{color:var(--ink); font-weight:700;}
+  .placeholder-note{
+    display:inline-block; margin-top:6px;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--gold); border:1px dashed rgba(201,153,46,0.4); padding:3px 8px; border-radius:2px;
+  }
+
+  .stat-block{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .stat{background:var(--bg-1); padding:26px 22px;}
+  .stat .num{font-family:'Anton'; font-size:34px; color:var(--crimson);}
+  .stat .lbl{font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-dim); margin-top:4px;}
+
+  /* ===== MEMBERS - versus layout ===== */
+  .members{display:grid; grid-template-columns:1fr auto 1fr; align-items:stretch; gap:0;}
+  @media(max-width:760px){.members{grid-template-columns:1fr; gap:24px;}}
+  .member-card{
+    background:var(--bg-1);
+    border:1px solid var(--line);
+    padding:36px;
+    position:relative;
+  }
+  .member-photo{
+    width:100%; aspect-ratio:1/1;
+    background:linear-gradient(135deg, var(--bg-2), #2A211C);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Anton'; font-size:56px; color:rgba(255,59,31,0.35);
+    margin-bottom:22px;
+    letter-spacing:0.02em;
+  }
+  .member-card h3{font-family:'Anton'; font-size:30px; text-transform:uppercase;}
+  .member-role{color:var(--gold); font-size:12px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; margin-top:4px;}
+  .member-card p{margin-top:14px; font-size:14px; line-height:1.7; color:var(--ink-dim);}
+  .vs-mark{
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Anton'; font-size:26px; color:var(--ink-dim);
+    padding:0 22px;
+  }
+  @media(max-width:760px){.vs-mark{padding:6px 0;}}
+
+  /* ===== FUTURE PLANS ===== */
+  .future-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:40px;}
+  @media(max-width:760px){.future-grid{grid-template-columns:1fr;}}
+  .future-card{background:var(--bg-1); padding:32px 30px; position:relative;}
+  .future-card::before{
+    content:''; position:absolute; top:0; left:0; width:3px; height:100%;
+    background:var(--crimson); opacity:0;
+    transition:opacity 0.2s;
+  }
+  .future-card:hover::before{opacity:1;}
+  .future-card .fc-label{
+    font-size:10px; text-transform:uppercase; letter-spacing:0.14em;
+    font-weight:700; color:var(--gold); margin-bottom:10px; display:block;
+  }
+  .future-card h4{font-family:'Anton'; font-size:20px; text-transform:uppercase; margin-bottom:12px; line-height:1.1;}
+  .future-card h4 em{color:var(--crimson); font-style:normal;}
+  .future-card p{font-size:14px; line-height:1.75; color:var(--ink-dim);}
+  .future-card p strong{color:var(--ink);}
+
+  .future-body{font-size:15px; line-height:1.9; color:var(--ink-dim);}
+  .future-body p{margin-bottom:18px;}
+  .future-body p:last-child{margin-bottom:0;}
+  .future-body strong{color:var(--ink); font-weight:700;}
+  .future-body em{color:var(--crimson); font-style:italic;}
+
+  /* ===== UNRELEASED CATALOGUE ===== */
+  .catalogue-intro{
+    border:1px solid var(--line);
+    background:var(--bg-1);
+    padding:36px 40px;
+    margin-bottom:40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .catalogue-intro::before{
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, var(--crimson), var(--gold));
+  }
+  .catalogue-intro .ci-warning{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,59,31,0.08); border:1px solid rgba(255,59,31,0.25);
+    padding:8px 14px; border-radius:2px;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.12em;
+    font-weight:700; color:var(--crimson);
+    margin-bottom:20px;
+  }
+  .catalogue-intro p{font-size:15px; line-height:1.85; color:var(--ink-dim); margin-bottom:14px;}
+  .catalogue-intro p:last-child{margin-bottom:0;}
+  .catalogue-intro p strong{color:var(--ink); font-weight:700;}
+  .catalogue-intro .ci-note{
+    margin-top:22px; padding-top:22px; border-top:1px solid var(--line);
+    font-size:13px; line-height:1.7; color:var(--ink-dim);
+  }
+  .catalogue-intro .ci-note strong{color:var(--gold);}
+
+  .demo-list{list-style:none; display:flex; flex-direction:column;}
+  .demo-item{
+    display:grid; grid-template-columns:50px 1fr auto; align-items:center; gap:20px;
+    padding:18px 0; border-top:1px solid var(--line);
+  }
+  .demo-item:last-child{border-bottom:1px solid var(--line);}
+  .demo-idx{font-family:'Anton'; font-size:16px; color:var(--ink-dim);}
+  .demo-title{font-size:16px; font-weight:700;}
+  .demo-title span{display:block; font-size:12px; font-weight:400; color:var(--ink-dim); margin-top:3px;}
+  .demo-link a{
+    color:var(--ink-dim); font-size:12px; text-transform:uppercase; letter-spacing:0.08em;
+    text-decoration:none; border-bottom:1px solid transparent;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .demo-link a:hover{color:var(--gold); border-color:var(--gold);}
+  .demo-badge{
+    display:inline-block; font-size:9px; text-transform:uppercase; letter-spacing:0.1em;
+    font-weight:700; padding:3px 7px; border-radius:2px;
+    border:1px solid rgba(201,153,46,0.3); color:var(--gold); margin-left:10px; vertical-align:middle;
+  }
+
+  /* ===== MUSIC IDENTITY ===== */
+  .music-identity{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;
+    margin-bottom:60px; padding-bottom:60px; border-bottom:1px solid var(--line);
+  }
+  @media(max-width:760px){.music-identity{grid-template-columns:1fr; gap:36px;}}
+
+  .music-photo{
+    width:100%; aspect-ratio:4/5;
+    background:linear-gradient(135deg, var(--bg-2), #2A211C);
+    border:1px solid var(--line);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:12px;
+    color:rgba(255,59,31,0.3);
+    position:relative;
+    overflow:hidden;
+  }
+  .music-photo img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .music-photo .photo-label{
+    position:absolute; bottom:0; left:0; right:0;
+    background:linear-gradient(to top, rgba(18,17,16,0.85), transparent);
+    padding:20px 20px 16px;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--ink-dim); font-weight:600;
+  }
+  .music-photo-placeholder-icon{
+    font-family:'Anton'; font-size:48px; opacity:0.4;
+  }
+  .music-photo-placeholder-text{
+    font-size:11px; text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--ink-dim); font-weight:600; opacity:0.5;
+  }
+
+  .music-identity-text{}
+  .music-identity-text .eyebrow{margin-bottom:16px; display:block;}
+  .music-identity-text h3{
+    font-family:'Anton'; font-size:clamp(26px,3.5vw,38px);
+    text-transform:uppercase; letter-spacing:-0.01em; line-height:1.05;
+    margin-bottom:22px;
+  }
+  .music-identity-text h3 span{color:var(--crimson);}
+  .music-identity-text p{
+    font-size:15px; line-height:1.85; color:var(--ink-dim); margin-bottom:16px;
+  }
+  .music-identity-text p strong{color:var(--ink); font-weight:700;}
+  .music-insp-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:24px;}
+  .music-insp-tags .tag{font-size:11px; padding:5px 12px;}
+
+  /* ===== DISCOGRAPHY ===== */
+  .track-row{
+    display:grid; grid-template-columns:50px 1fr auto; align-items:center; gap:20px;
+    padding:18px 0; border-top:1px solid var(--line);
+  }
+  .track-row:last-child{border-bottom:1px solid var(--line);}
+  .track-idx{font-family:'Anton'; font-size:16px; color:var(--ink-dim);}
+  .track-title{font-size:16px; font-weight:700;}
+  .track-title span{display:block; font-size:12px; font-weight:400; color:var(--ink-dim); margin-top:3px; text-transform:none; letter-spacing:0;}
+  .track-links a{color:var(--ink-dim); font-size:12px; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; margin-left:16px; border-bottom:1px solid transparent;}
+  .track-links a:hover{color:var(--crimson); border-color:var(--crimson);}
+
+  /* ===== LIVE ===== */
+  .live-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  @media(max-width:760px){.live-grid{grid-template-columns:1fr; gap:36px;}}
+
+  .live-text .eyebrow{display:block; margin-bottom:16px;}
+  .live-text p{font-size:15px; line-height:1.9; color:var(--ink-dim); margin-bottom:16px;}
+  .live-text p:last-child{margin-bottom:0;}
+  .live-text p strong{color:var(--ink); font-weight:700;}
+
+  .live-stats{display:flex; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:32px;}
+  .live-stat{background:var(--bg-1); padding:22px 20px; flex:1;}
+  .live-stat .num{font-family:'Anton'; font-size:30px; color:var(--crimson);}
+  .live-stat .lbl{font-size:10px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-dim); margin-top:4px;}
+
+  .live-photo{
+    width:100%;
+    aspect-ratio:3/4;
+    background:linear-gradient(135deg, var(--bg-2), #2A211C);
+    border:1px solid var(--line);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:12px; position:relative; overflow:hidden;
+  }
+  .live-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .live-photo .photo-label{
+    position:absolute; bottom:0; left:0; right:0;
+    background:linear-gradient(to top, rgba(18,17,16,0.9), transparent);
+    padding:24px 20px 16px;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--ink-dim); font-weight:600;
+  }
+  .live-photo-placeholder-icon{font-family:'Anton'; font-size:48px; color:rgba(255,59,31,0.3);}
+  .live-photo-placeholder-text{font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:var(--ink-dim); font-weight:600; opacity:0.5;}
+
+  /* ===== CONTACT / FOOTER ===== */
+  footer{padding:90px 0 60px; position:relative; z-index:2;}
+  .contact-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:64px;}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-list{list-style:none;}
+  .contact-list li{padding:14px 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  .contact-list li:last-child{border-bottom:1px solid var(--line);}
+  .contact-list .clbl{font-size:12px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-dim);}
+  .contact-list .cval{font-size:15px; font-weight:600;}
+  .contact-list a{color:var(--ink); text-decoration:none;}
+  .contact-list a:hover{color:var(--crimson);}
+
+  .social-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;}
+  .social-row a{
+    border:1px solid var(--line); padding:10px 18px; font-size:12px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--ink-dim); text-decoration:none; border-radius:2px; font-weight:700;
+  }
+  .social-row a:hover{border-color:var(--gold); color:var(--gold);}
+
+  .foot-bottom{margin-top:70px; padding-top:24px; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .foot-bottom p{font-size:12px; color:var(--ink-dim); letter-spacing:0.03em;}
+
+  /* ================================================================
+     🖨️  PRINT-OPTIMIZED CSS - SANAKPAAR EPK
+     Ensures pixel-perfect PDF export with a seamless scrolling feel.
+     All additions are clearly marked with this banner.
+     ================================================================ */
+
+  /* --- General print reset & page dimensions for long-scrolling PDF --- */
+  @media print {
+    /* Force a transparent/white print background so dark colors print properly */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    /* Prevent any page breaks inside elements - keep layout seamless */
+    html, body {
+      background: var(--bg-0) !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100%;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Ensure all background textures, gradients, borders, and pseudo-elements render */
+    body::before,
+    body::after,
+    nav::before,
+    nav::after {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Prevent page breaks inside any section or major block */
+    .section,
+    header.hero,
+    footer,
+    .bio-grid,
+    .members,
+    .member-card,
+    .music-identity,
+    .future-grid,
+    .future-card,
+    .catalogue-intro,
+    .live-grid,
+    .contact-grid,
+    nav,
+    .stat-block,
+    .stat,
+    .live-stats,
+    .live-stat,
+    .demo-list,
+    .demo-item,
+    .track-row {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* Prevent orphans/widows in text blocks */
+    p, h1, h2, h3, h4, li, blockquote {
+      orphans: 3;
+      widows: 3;
+    }
+
+    /* --- NAV: force to display at top of every PDF page, no sticky issues --- */
+    nav {
+      position: relative !important; /* fallback: static so it doesn't break across pages */
+      top: 0 !important;
+      background: var(--bg-0) !important;
+      backdrop-filter: none !important; /* backdrop-filter sometimes causes render issues in PDF */
+      -webkit-backdrop-filter: none !important;
+      border-bottom: 1px solid var(--line) !important;
+      z-index: 10 !important;
+    }
+
+    /* Ensure nav links are visible */
+    .nav-links a {
+      color: var(--ink-dim) !important;
+    }
+
+    /* --- HERO: keep exact positioning & devanagari watermark --- */
+    header.hero {
+      padding: 120px 0 90px !important;
+      overflow: visible !important; /* prevent clipping of watermark in print */
+    }
+    .devanagari-mark {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      opacity: 0.1 !important; /* slightly boosted so it's visible in print */
+      color: rgba(255, 59, 31, 0.1) !important;
+    }
+
+    /* --- Ensure wordmark keeps its large size --- */
+    h1.wordmark {
+      font-size: clamp(64px, 12vw, 148px) !important;
+      line-height: 0.86 !important;
+    }
+
+    /* --- Buttons: remove hover transforms, keep colors --- */
+    .btn-solid {
+      background: var(--crimson) !important;
+      color: #161110 !important;
+      transform: none !important;
+    }
+    .btn-outline {
+      border: 1px solid var(--line) !important;
+      color: var(--ink) !important;
+      transform: none !important;
+    }
+    .btn:hover,
+    .btn-solid:hover,
+    .btn-outline:hover {
+      transform: none !important;
+    }
+
+    /* --- Section spacing preserved exactly --- */
+    .section {
+      padding: 88px 0 !important;
+      border-bottom: 1px solid var(--line) !important;
+    }
+
+    /* --- Member cards: ensure images and borders render --- */
+    .member-photo img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+    .member-card {
+      background: var(--bg-1) !important;
+      border: 1px solid var(--line) !important;
+    }
+
+    /* --- Music identity: keep two-column layout intact --- */
+    .music-photo,
+    .live-photo {
+      aspect-ratio: attr(width) / attr(height); /* fallback */
+    }
+    .music-photo img,
+    .live-photo img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+    .photo-label {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      background: linear-gradient(to top, rgba(18, 17, 16, 0.85), transparent) !important;
+    }
+
+    /* --- Future plans cards: ensure red left border renders --- */
+    .future-card {
+      background: var(--bg-1) !important;
+      border: 1px solid var(--line) !important;
+    }
+    .future-card::before {
+      opacity: 1 !important; /* always show the crimson accent line in print */
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* --- Catalogue intro: ensure gradient top border renders --- */
+    .catalogue-intro::before {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      background: linear-gradient(90deg, var(--crimson), var(--gold)) !important;
+    }
+    .catalogue-intro {
+      background: var(--bg-1) !important;
+      border: 1px solid var(--line) !important;
+    }
+    .catalogue-intro .ci-warning {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      background: rgba(255, 59, 31, 0.08) !important;
+      border: 1px solid rgba(255, 59, 31, 0.25) !important;
+    }
+
+    /* --- Demo track list: keep grid alignment --- */
+    .demo-item,
+    .track-row {
+      display: grid !important;
+      grid-template-columns: 50px 1fr auto !important;
+      align-items: center !important;
+      gap: 20px !important;
+    }
+
+    /* --- Live section: keep stats layout --- */
+    .live-stats {
+      display: flex !important;
+      gap: 1px !important;
+      background: var(--line) !important;
+      border: 1px solid var(--line) !important;
+    }
+    .live-stat {
+      background: var(--bg-1) !important;
+    }
+
+    /* --- Contact / Footer --- */
+    footer {
+      padding: 90px 0 60px !important;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .foot-bottom {
+      border-top: 1px solid var(--line) !important;
+    }
+
+    /* --- Links: show underline in print so they're usable --- */
+    a {
+      text-decoration: underline;
+      text-decoration-color: var(--ink-dim);
+      text-underline-offset: 2px;
+    }
+
+    /* --- Hide interactive hover effects that don't apply in print --- */
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--ink-dim) !important;
+    }
+    .social-row a:hover {
+      border-color: var(--line) !important;
+      color: var(--ink-dim) !important;
+    }
+    .demo-link a:hover {
+      color: var(--ink-dim) !important;
+      border-color: transparent !important;
+    }
+    .track-links a:hover {
+      color: var(--ink-dim) !important;
+      border-color: transparent !important;
+    }
+    .contact-list a:hover {
+      color: var(--ink) !important;
+    }
+
+    /* --- Wrap: ensure max-width is respected in print --- */
+    .wrap {
+      max-width: 1120px !important;
+      margin: 0 auto !important;
+      padding: 0 32px !important;
+    }
+
+    /* --- Fix any potential font rendering issues in PDF --- */
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* --- Ensure pseudo-elements (textures) render --- */
+    body::before,
+    body::after {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      display: block !important;
+    }
+
+    /* --- Devanagari watermark: keep present --- */
+    .devanagari-mark {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* --- Ensure all borders show up --- */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-mark">SANAKPAAR</div>
+    <ul class="nav-links">
+      <li><a href="#bio">Bio</a></li>
+      <li><a href="#members">Duo</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#press">Demos</a></li>
+      <li><a href="#shows">Shows</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="devanagari-mark">सनक</div>
+  <div class="wrap hero-inner">
+    <div class="crossbar">
+      <span class="eyebrow">Electronic Press Kit - 2026</span>
+      <span class="rule"></span>
+    </div>
+    <h1 class="wordmark">SANAK<span class="hit">PAAR</span></h1>
+    <p class="hero-sub">
+      Beyond The Limits 
+    </p>
+    <div class="genre-tags">
+      <span class="tag on">Rap</span>
+      <span class="tag on">Trap</span>
+      <span class="tag on">Melodic</span>
+      <span class="tag on">New Gen</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="https://open.spotify.com/track/3GuuCOeOYMXzAznqJFkq4j?si=eb616631d03e4ec0" target="_blank">▶ Play Latest Single</a>
+      <a class="btn btn-outline" href="https://wa.me/919667835962" target="_blank">Booking Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- BIO -->
+  <section class="section" id="bio">
+    <div class="wrap">
+      <div class="section-head"><h2>Bio</h2><span class="rule"></span></div>
+      <div class="bio-grid">
+        <div class="bio-text">
+          <p><strong>Sanakpaar</strong> is a duo out of Ghaziabad, Uttar Pradesh, built on the idea of <strong><i>crossing
+          limits - "sanak" "paar".</i></strong> Sanakpaar isn't a translation, it's a philosophy born from the idea of pushing beyond the obsession. It represents the pursuit of growth beyond perceived limits - breaking creative boundaries, embracing chaos, and refusing to settle for convention.</p>
+          <p>Mady and YSH first met in school, reconnecting during the lockdown after independently beginning
+            their rap journeys. Early collaborations revealed a rare chemistry, leading to the formation of
+            Sanakpaar in 2025.</p>
+          <p>The duo crafts music that moves effortlessly between explosive club anthems, melodic introspection, and emotionally charged narratives. Rooted in Delhi NCR and shaped by both Indian musical heritage and global hip-hop influences, we're building more than a catalog - we're building a universe defined by chaos, ambition, and relentless evolution.</p>
+        </div>
+        <div class="stat-block">
+          <div class="stat"><div class="num">3000+</div><div class="lbl">Monthly Listeners</div></div>
+          <div class="stat"><div class="num">25K+</div><div class="lbl">Total Streams</div></div>
+          <div class="stat"><div class="num">1.8K+</div><div class="lbl">Social Following</div></div>
+          <div class="stat"><div class="num">2025</div><div class="lbl">Formed</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERS -->
+  <section class="section" id="members">
+    <div class="wrap">
+      <div class="section-head"><h2>The Duo</h2><span class="rule"></span></div>
+      <div class="members">
+        <div class="member-card">
+          <div class="member-photo"><img src="public/mady.jpg" alt="Mady" width="427.48" height="427.48"></div>
+          <h3>MADY</h3>
+          <div class="member-role">Vocals / Bars</div>
+          <p>Ghaziabad, Mesmerizing hooks & melodies</p>
+        </div>
+        <div class="vs-mark">×</div>
+        <div class="member-card">
+          <div class="member-photo"><img src="public/ysh 2.jpg" alt="YSH" width="427.48" height="427.48"></div>
+          <h3>YSH</h3>
+          <div class="member-role">Vocals / Bars</div>
+          <p>Ghaziabad, Creative writing with layered bars</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section class="section" id="music">
+    <div class="wrap">
+      <div class="section-head"><h2>Music</h2><span class="rule"></span></div>
+
+      <!-- MUSIC IDENTITY: photo + sound description -->
+      <div class="music-identity">
+        <!-- LEFT: drop your photo here - replace src with your image file -->
+        <div class="music-photo">
+          <!-- Swap the comment below with: <img src="your-photo.jpg" alt="Sanakpaar in the studio"> -->
+          <img src="public/sanakpaar1.jpg" alt="Sanakpaar 1">
+          <!--<div class="music-photo-placeholder-icon">📷</div>
+          <div class="music-photo-placeholder-text">Add photo here</div> -->
+          <div class="photo-label">Sanakpaar - Performing</div>
+        </div>
+
+        <!-- RIGHT: sound & inspiration text -->
+        <div class="music-identity-text">
+          <span class="eyebrow">Sound & Influences</span>
+          <h3>Chaos <span>Crafted</span> Into Music</h3>
+          <p>
+            Rooted in the Delhi NCR culture, the duo is redefining the boundaries of modern Indian rap through a fearless blend of <strong> trap, melody, and experimental production</strong>. Known for their versatility, Mady and YSH move effortlessly between high-energy bangers and emotionally driven records, creating a sound that is both cinematic and deeply personal.
+          </p>
+          <p>
+           Introduced to hip-hop through pioneers like Raftaar and Seedhe Maut, the duo later found their artistic direction in the sonic worlds of<strong> Travis Scott, Kanye West, and Drake</strong> - drawing from these influences while staying rooted in their own experiences, Sanakpaar is building a distinct identity-one driven by ambition, authenticity, and a vision to push Indian hip-hop beyond convention.
+          </p>
+          <p>
+            Lyrically, Mady and YSH explore <strong>ambition, identity, love, and the grind</strong> -
+            writing from lived experience rather than borrowed narratives. The result is music that sounds
+            cinematic but never loses its raw edge.
+          </p>
+          <div class="music-insp-tags">
+            <span class="tag">Travis Scott</span>
+            <span class="tag">Drake</span>
+            <span class="tag">Raftaar</span>
+            <span class="tag">Kanye / YE</span>
+            <span class="tag">Desi Hip-Hop</span>
+            <span class="tag">Trap</span>
+            <span class="tag">Melodic Rap</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRACKLIST -->
+      <div>
+        <div class="track-row">
+          <div class="track-idx">01</div>
+          <div class="track-title">CHAL CHAL<span>Single · 2025 · 7K streams</span></div>
+          <div class="track-links"><a href="https://open.spotify.com/track/7EBjc5bkMWbp4MG1mgjUfR?si=c8b197ecfb0d4fbb" target="_blank">Spotify</a><a href="https://music.youtube.com/watch?v=e5irnUk3yMU&si=Pq1DE_Fhjn8t74VX" target="_blank">YouTube</a><a href="https://music.apple.com/us/song/chal-chal/1849604278" target="_blank">Apple</a></div>
+        </div>
+        <div class="track-row">
+          <div class="track-idx">02</div>
+          <div class="track-title">BODY BAG<span>Single · 2026</span></div>
+          <div class="track-links"><a href="https://open.spotify.com/track/0y3Q6ZSwQgG0UhwqyYJ3aK?si=dbe28bb2d6004032" target="_blank">Spotify</a><a href="https://music.youtube.com/watch?v=cx6hF5OM-EI&si=_OOvR1u-xRwVCqae" target="_blank">YouTube</a><a href="https://music.apple.com/us/song/body-bag/1875653538" target="_blank">Apple</a></div>
+        </div>
+        <div class="track-row">
+          <div class="track-idx">03</div>
+          <div class="track-title">GANDI AADAT<span>Single · 2026</span></div>
+          <div class="track-links"><a href="https://open.spotify.com/track/6KBYVsOfNjBFLjGlGzsNvV?si=351159809928497e" target="_blank">Spotify</a><a href="https://music.youtube.com/watch?v=HhuEJZJw0ec&si=42oOHSpCb3BRJ6QW" target="_blank">YouTube</a><a href="https://music.apple.com/us/song/gandi-aadat/1889702909" target="_blank">Apple</a></div>
+        </div>
+        <div class="track-row">
+          <div class="track-idx">04</div>
+          <div class="track-title">TAG TEAM<span>Single · 2025</span></div>
+          <div class="track-links"><a href="https://open.spotify.com/track/3DlYCtt7OXDaP9ATKW2CMF?si=22db43b697dc4a84" target="_blank">Spotify</a><a href="https://music.youtube.com/watch?v=vU0InhfKuKM&si=o4_No9BQgzrkSv0G" target="_blank">YouTube</a><a href="https://music.apple.com/us/song/tag-team/1858708279"  target="_blank">Apple</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUTURE PLANS -->
+  <section class="section" id="achievements">
+    <div class="wrap">
+      <div class="section-head"><h2>Future Plans</h2><span class="rule"></span></div>
+
+      <!-- Project cards -->
+      <div class="future-grid">
+        <div class="future-card">
+          <span class="fc-label">Upcoming Series</span>
+          <h4>SanakTape: <em>Vol. 1 & 2</em></h4>
+          <p>A mixtape series showcasing the duo's full versatility - <strong>hard-hitting rap, melodic records, experimental sounds, and high-energy bangers</strong> - supported by music videos that build a complete storyline across both tapes.</p>
+        </div>
+        <div class="future-card">
+          <span class="fc-label">Ready for Release</span>
+          <h4><em>4U</em> & 2008 Bitcoin</h4>
+          <p>Two completed projects awaiting release: <strong>4U</strong>, a melodic EP exploring deeper sides of their artistry, and <strong>2008 Bitcoin</strong>, a mixtape blending hardcore lyricism, trap, and experimental production.</p>
+        </div>
+        <div class="future-card">
+          <span class="fc-label">In Development</span>
+          <h4>Indian Fusion <em>Project</em></h4>
+          <p>A project fusing <strong>Indian musical influences with trap and experimental sounds</strong> - carving out a distinctive sonic identity that is entirely their own.</p>
+        </div>
+        <div class="future-card">
+          <span class="fc-label">Long-Term Vision</span>
+          <h4>Debut <em>Studio Album</em></h4>
+          <p>A debut full-length built around <strong>powerful storytelling and immersive world-building</strong>, with a ready concept - alongside another large-scale conceptual project in the pipeline.</p>
+        </div>
+      </div>
+
+      <!-- Full narrative -->
+      <div class="future-body">
+        <p>Sanakpaar's upcoming release cycle begins with a series of singles leading into <em><strong>SanakTape: Vol. 1</strong></em> and <em><strong>SanakTape: Vol. 2</strong></em> - a mixtape series showcasing the duo's versatility across hard-hitting rap, melodic records, experimental sounds, and high-energy bangers. The rollout will be supported by multiple music videos building an entire storyline for both mixtapes.</p>
+        <p>The duo has also completed two projects that are ready for release: <em><strong>4U</strong></em>, a melodic EP exploring more sides of their artistry, and <em><strong>2008 Bitcoin</strong></em>, a mixtape blending hardcore lyricism, trap, and experimental production.</p>
+        <p>Looking ahead, Sanakpaar is developing a project that fuses <strong>Indian musical influences with trap and experimental sounds</strong>, creating a distinctive sonic identity.</p>
+        <p>Their long-term vision includes a debut studio album built around <strong>powerful storytelling and immersive world-building</strong> with a ready concept, alongside another conceptual project.</p>
+        <p>With multiple projects already completed and an ambitious release roadmap, <strong>Sanakpaar is committed to building a lasting artistic universe</strong> through innovative music, compelling visuals, and constant evolution.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- UNRELEASED CATALOGUE -->
+  <section class="section" id="press">
+    <div class="wrap">
+      <div class="section-head"><h2>Unreleased Catalogue</h2><span class="rule"></span></div>
+
+      <!-- Intro + confidentiality notice -->
+      <div class="catalogue-intro">
+        <div class="ci-warning">⚠ Confidential - Industry Only</div>
+        <p>The links below provide private access to a selection of unreleased demo recordings from Sanakpaar's upcoming projects. These tracks are shared exclusively to showcase the duo's songwriting, versatility, and creative direction.</p>
+        <div class="ci-note">
+          Please note that these are <strong>demo versions</strong> and are <strong>not yet mixed or mastered</strong>. They are intended solely for <strong>A&Rs, labels, publishers, booking agencies, and other industry professionals</strong>. Kindly treat all material as confidential and do not distribute or share it without prior permission.
+        </div>
+      </div>
+
+      <!-- Demo track list - add your private links below -->
+      <ul class="demo-list">
+        <li class="demo-item">
+          <div class="demo-idx">01</div>
+          <div class="demo-title">Sanaktape : Vol 1<span>Side A · Demo Version</span></div>
+          <div class="demo-link"><a href="https://untitled.stream/library/project/VHfn79LrlddIiw5cRGZwd" target="_blank">▶ Private Link</a></div>
+        </li>
+        <li class="demo-item">
+          <div class="demo-idx">02</div>
+          <div class="demo-title">Sanaktape : Vol 2<span>Side B · Demo Version</span></div>
+          <div class="demo-link"><a href="https://untitled.stream/library/project/f1bmOCR2w7787LMmZK2JQ" target="_blank">▶ Private Link</a></div>
+        </li>
+        <li class="demo-item">
+          <div class="demo-idx">03</div>
+          <div class="demo-title">Singles<span>All Singles · Demo Version</span></div>
+          <div class="demo-link"><a href="https://untitled.stream/library/project/SXFP3Rrfa546dllhyxsgB" target="_blank">▶ Private Link</a></div>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- LIVE -->
+  <section class="section" id="shows">
+    <div class="wrap">
+      <div class="section-head"><h2>Live</h2><span class="rule"></span></div>
+      <div class="live-grid">
+
+        <!-- LEFT: text & stats -->
+        <div class="live-text">
+          <span class="eyebrow">Stage Presence</span>
+          <p>Sanakpaar's live performances are built on intensity, chemistry, and crowd connection. Blending commanding stage presence with high-energy delivery, the duo creates immersive sets that resonate long after the final track.</p>
+          <p>Within their first year, Sanakpaar has performed at <strong>10+ live shows</strong>, collectively playing to audiences of <strong>1,500+ people</strong>. They have also shared stages and opened for established names in the Indian hip-hop scene, including <strong>Arpit Bala</strong>, further strengthening their reputation as a compelling live act.</p>
+          <p>Whether delivering explosive rap records or melodic performances, Sanakpaar consistently brings authenticity, energy, and a performance-first mindset - earning enthusiastic responses from audiences at every show.</p>
+
+          <div class="live-stats">
+            <div class="live-stat"><div class="num">10+</div><div class="lbl">Live Shows</div></div>
+            <div class="live-stat"><div class="num">1,500+</div><div class="lbl">People Reached</div></div>
+          </div>
+        </div>
+
+        <!-- RIGHT: performance photo collage - replace src with your image -->
+        <div class="live-photo">
+          <img src="public/live collage.jpg" alt="Sanakpaar Live">
+          <!--<div class="live-photo-placeholder-icon">🎤</div>
+          <div class="live-photo-placeholder-text">Add performance collage</div> -->
+          <div class="photo-label">Sanakpaar - Live</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-head"><h2>Contact</h2><span class="rule"></span></div>
+    <div class="contact-grid">
+      <ul class="contact-list">
+        <li><span class="clbl">Booking</span><span class="cval"><a href="mailto:sanakpaar@gmail.com">sanakpaar@gmail.com</a></span></li>
+        <li><span class="clbl">Management</span><span class="cval"><a href="mailto:sanakpaar@gmail.com">sanakpaar@gmail.com</a></span></li>
+        <li><span class="clbl">Press</span><span class="cval"><a href="mailto:sanakpaar@gmail.com">sanakpaar@gmail.com</a></span></li>
+        <li><span class="clbl">Phone</span><span class="cval">+91 96678 35962</span></li>
+      </ul>
+      <div>
+        <div class="clbl" style="margin-bottom:10px;">Follow</div>
+        <div class="social-row">
+          <a href="https://www.instagram.com/sanakpaar" target="_blank">Instagram</a>
+          <a href="https://www.youtube.com/@Sanakpaar" target="_blank">YouTube</a>
+          <a href="https://open.spotify.com/artist/2Z3qUmTivTaWrKCjy4Y4Kb" target="_blank">Spotify</a>
+          <a href="https://www.x.com/sanakpaar" target="_blank">X / Twitter</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>SANAKPAAR - Electronic Press Kit</p>
+      <p>All Rights Registered - SANAKPAAR</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
