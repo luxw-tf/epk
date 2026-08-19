@@ -5,20 +5,17 @@
 
 Official Electronic Press Kit for Indian hip-hop duo **Sanakpaar** (Mady & YSH).
 
-## 🚀 Live Preview & Deployment
+## 🚀 Vercel Deployment Settings
 
-### Vercel (Recommended)
-This repository is configured for 1-click deployment on **[Vercel](https://vercel.com)**:
+This repository is pure static HTML/CSS/JS. To deploy on **[Vercel](https://vercel.com)**:
+
 1. Import this repository into Vercel.
-2. Framework Preset: **Other** / Static.
-3. Deploy!
-
-### Local Development
-```bash
-# Using Node.js
-npm run dev
-# or open index.html directly in any modern browser
-```
+2. In **Build & Development Settings**:
+   - **Framework Preset:** `Other`
+   - **Root Directory:** `./` (default)
+   - **Build Command:** None (disabled)
+   - **Output Directory:** None (leave empty or default `.`)
+3. Click **Deploy**.
 
 ## 🎵 Featured Tracks
 - **CHAL CHAL** (2025)
