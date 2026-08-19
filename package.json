@@ -1,0 +1,19 @@
+{
+  "name": "sanakpaar-epk",
+  "version": "1.0.0",
+  "description": "SANAKPAAR - Official Electronic Press Kit (EPK)",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve .",
+    "preview": "npx serve ."
+  },
+  "keywords": [
+    "sanakpaar",
+    "epk",
+    "electronic-press-kit",
+    "indian-hip-hop",
+    "desi-hip-hop"
+  ],
+  "author": "SANAKPAAR",
+  "license": "UNLICENSED"
+}

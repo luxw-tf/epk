@@ -2,8 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SANAKPAAR - Electronic Press Kit</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SANAKPAAR — Electronic Press Kit</title>
+<meta name="description" content="Official Electronic Press Kit (EPK) for SANAKPAAR — Indian hip-hop duo from Ghaziabad / Delhi NCR (Mady &amp; YSH). Beyond The Limits — Rap / Trap / Melodic.">
+<meta name="keywords" content="Sanakpaar, Sanakpaar EPK, Mady, YSH, Desi Hip Hop, Indian Rap, Delhi NCR Hip Hop, Electronic Press Kit, Chal Chal, Body Bag, Gandi Aadat, Tag Team">
+<meta name="author" content="SANAKPAAR">
+<meta name="theme-color" content="#121110">
+
+<!-- Open Graph / Social Media -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="SANAKPAAR — Electronic Press Kit">
+<meta property="og:description" content="Official Electronic Press Kit for Indian hip-hop duo SANAKPAAR (Mady &amp; YSH). Beyond The Limits — Rap / Trap / Melodic.">
+<meta property="og:image" content="public/sanakpaar1.jpg">
+<meta property="og:site_name" content="SANAKPAAR">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SANAKPAAR — Electronic Press Kit">
+<meta name="twitter:description" content="Official Electronic Press Kit for Indian hip-hop duo SANAKPAAR (Mady &amp; YSH). Beyond The Limits — Rap / Trap / Melodic.">
+<meta name="twitter:image" content="public/sanakpaar1.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@600;800&display=swap');
 
@@ -183,6 +204,10 @@
     font-family:'Anton'; font-size:56px; color:rgba(255,59,31,0.35);
     margin-bottom:22px;
     letter-spacing:0.02em;
+    overflow:hidden;
+  }
+  .member-photo img{
+    width:100%; height:100%; object-fit:cover; display:block;
   }
   .member-card h3{font-family:'Anton'; font-size:30px; text-transform:uppercase;}
   .member-role{color:var(--gold); font-size:12px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; margin-top:4px;}
@@ -391,19 +416,14 @@
   /* ================================================================
      🖨️  PRINT-OPTIMIZED CSS - SANAKPAAR EPK
      Ensures pixel-perfect PDF export with a seamless scrolling feel.
-     All additions are clearly marked with this banner.
      ================================================================ */
-
-  /* --- General print reset & page dimensions for long-scrolling PDF --- */
   @media print {
-    /* Force a transparent/white print background so dark colors print properly */
     * {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
       color-adjust: exact !important;
     }
 
-    /* Prevent any page breaks inside elements - keep layout seamless */
     html, body {
       background: var(--bg-0) !important;
       margin: 0 !important;
@@ -413,7 +433,6 @@
       print-color-adjust: exact;
     }
 
-    /* Ensure all background textures, gradients, borders, and pseudo-elements render */
     body::before,
     body::after,
     nav::before,
@@ -422,7 +441,6 @@
       print-color-adjust: exact;
     }
 
-    /* Prevent page breaks inside any section or major block */
     .section,
     header.hero,
     footer,
@@ -447,47 +465,41 @@
       page-break-inside: avoid;
     }
 
-    /* Prevent orphans/widows in text blocks */
     p, h1, h2, h3, h4, li, blockquote {
       orphans: 3;
       widows: 3;
     }
 
-    /* --- NAV: force to display at top of every PDF page, no sticky issues --- */
     nav {
-      position: relative !important; /* fallback: static so it doesn't break across pages */
+      position: relative !important;
       top: 0 !important;
       background: var(--bg-0) !important;
-      backdrop-filter: none !important; /* backdrop-filter sometimes causes render issues in PDF */
+      backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
       border-bottom: 1px solid var(--line) !important;
       z-index: 10 !important;
     }
 
-    /* Ensure nav links are visible */
     .nav-links a {
       color: var(--ink-dim) !important;
     }
 
-    /* --- HERO: keep exact positioning & devanagari watermark --- */
     header.hero {
       padding: 120px 0 90px !important;
-      overflow: visible !important; /* prevent clipping of watermark in print */
+      overflow: visible !important;
     }
     .devanagari-mark {
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
-      opacity: 0.1 !important; /* slightly boosted so it's visible in print */
+      opacity: 0.1 !important;
       color: rgba(255, 59, 31, 0.1) !important;
     }
 
-    /* --- Ensure wordmark keeps its large size --- */
     h1.wordmark {
       font-size: clamp(64px, 12vw, 148px) !important;
       line-height: 0.86 !important;
     }
 
-    /* --- Buttons: remove hover transforms, keep colors --- */
     .btn-solid {
       background: var(--crimson) !important;
       color: #161110 !important;
@@ -504,13 +516,11 @@
       transform: none !important;
     }
 
-    /* --- Section spacing preserved exactly --- */
     .section {
       padding: 88px 0 !important;
       border-bottom: 1px solid var(--line) !important;
     }
 
-    /* --- Member cards: ensure images and borders render --- */
     .member-photo img {
       width: 100% !important;
       height: 100% !important;
@@ -522,10 +532,9 @@
       border: 1px solid var(--line) !important;
     }
 
-    /* --- Music identity: keep two-column layout intact --- */
     .music-photo,
     .live-photo {
-      aspect-ratio: attr(width) / attr(height); /* fallback */
+      aspect-ratio: attr(width) / attr(height);
     }
     .music-photo img,
     .live-photo img {
@@ -539,18 +548,16 @@
       background: linear-gradient(to top, rgba(18, 17, 16, 0.85), transparent) !important;
     }
 
-    /* --- Future plans cards: ensure red left border renders --- */
     .future-card {
       background: var(--bg-1) !important;
       border: 1px solid var(--line) !important;
     }
     .future-card::before {
-      opacity: 1 !important; /* always show the crimson accent line in print */
+      opacity: 1 !important;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
-    /* --- Catalogue intro: ensure gradient top border renders --- */
     .catalogue-intro::before {
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
@@ -567,7 +574,6 @@
       border: 1px solid rgba(255, 59, 31, 0.25) !important;
     }
 
-    /* --- Demo track list: keep grid alignment --- */
     .demo-item,
     .track-row {
       display: grid !important;
@@ -576,7 +582,6 @@
       gap: 20px !important;
     }
 
-    /* --- Live section: keep stats layout --- */
     .live-stats {
       display: flex !important;
       gap: 1px !important;
@@ -587,7 +592,6 @@
       background: var(--bg-1) !important;
     }
 
-    /* --- Contact / Footer --- */
     footer {
       padding: 90px 0 60px !important;
       break-inside: avoid;
@@ -597,14 +601,12 @@
       border-top: 1px solid var(--line) !important;
     }
 
-    /* --- Links: show underline in print so they're usable --- */
     a {
       text-decoration: underline;
       text-decoration-color: var(--ink-dim);
       text-underline-offset: 2px;
     }
 
-    /* --- Hide interactive hover effects that don't apply in print --- */
     .nav-links a:hover,
     .nav-links a:focus-visible {
       color: var(--ink-dim) !important;
@@ -625,21 +627,18 @@
       color: var(--ink) !important;
     }
 
-    /* --- Wrap: ensure max-width is respected in print --- */
     .wrap {
       max-width: 1120px !important;
       margin: 0 auto !important;
       padding: 0 32px !important;
     }
 
-    /* --- Fix any potential font rendering issues in PDF --- */
     html {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
     }
 
-    /* --- Ensure pseudo-elements (textures) render --- */
     body::before,
     body::after {
       -webkit-print-color-adjust: exact;
@@ -647,13 +646,11 @@
       display: block !important;
     }
 
-    /* --- Devanagari watermark: keep present --- */
     .devanagari-mark {
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
-    /* --- Ensure all borders show up --- */
     * {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
@@ -695,8 +692,8 @@
       <span class="tag on">New Gen</span>
     </div>
     <div class="hero-cta">
-      <a class="btn btn-solid" href="https://open.spotify.com/track/3GuuCOeOYMXzAznqJFkq4j?si=eb616631d03e4ec0" target="_blank">▶ Play Latest Single</a>
-      <a class="btn btn-outline" href="https://wa.me/919667835962" target="_blank">Booking Contact</a>
+      <a class="btn btn-solid" href="https://open.spotify.com/track/3GuuCOeOYMXzAznqJFkq4j?si=eb616631d03e4ec0" target="_blank" rel="noopener noreferrer">▶ Play Latest Single</a>
+      <a class="btn btn-outline" href="https://wa.me/919667835962" target="_blank" rel="noopener noreferrer">Booking Contact</a>
     </div>
   </div>
 </header>
@@ -732,14 +729,14 @@
       <div class="section-head"><h2>The Duo</h2><span class="rule"></span></div>
       <div class="members">
         <div class="member-card">
-          <div class="member-photo"><img src="public/mady.jpg" alt="Mady" width="427.48" height="427.48"></div>
+          <div class="member-photo"><img src="public/mady.jpg" alt="Mady" width="428" height="428" loading="lazy" decoding="async"></div>
           <h3>MADY</h3>
           <div class="member-role">Vocals / Bars</div>
           <p>Ghaziabad, Mesmerizing hooks & melodies</p>
         </div>
         <div class="vs-mark">×</div>
         <div class="member-card">
-          <div class="member-photo"><img src="public/ysh 2.jpg" alt="YSH" width="427.48" height="427.48"></div>
+          <div class="member-photo"><img src="public/ysh 2.jpg" alt="YSH" width="428" height="428" loading="lazy" decoding="async"></div>
           <h3>YSH</h3>
           <div class="member-role">Vocals / Bars</div>
           <p>Ghaziabad, Creative writing with layered bars</p>
@@ -755,12 +752,9 @@
 
       <!-- MUSIC IDENTITY: photo + sound description -->
       <div class="music-identity">
-        <!-- LEFT: drop your photo here - replace src with your image file -->
+        <!-- LEFT: photo -->
         <div class="music-photo">
-          <!-- Swap the comment below with: <img src="your-photo.jpg" alt="Sanakpaar in the studio"> -->
-          <img src="public/sanakpaar1.jpg" alt="Sanakpaar 1">
-          <!--<div class="music-photo-placeholder-icon">📷</div>
-          <div class="music-photo-placeholder-text">Add photo here</div> -->
+          <img src="public/sanakpaar1.jpg" alt="Sanakpaar 1" loading="lazy" decoding="async">
           <div class="photo-label">Sanakpaar - Performing</div>
         </div>
 
@@ -796,22 +790,22 @@
         <div class="track-row">
           <div class="track-idx">01</div>
           <div class="track-title">CHAL CHAL<span>Single · 2025 · 7K streams</span></div>
-          <div class="track-links"><a href="https://open.spotify.com/track/7EBjc5bkMWbp4MG1mgjUfR?si=c8b197ecfb0d4fbb" target="_blank">Spotify</a><a href="https://music.youtube.com/watch?v=e5irnUk3yMU&si=Pq1DE_Fhjn8t74VX" target="_blank">YouTube</a><a href="https://music.apple.com/us/song/chal-chal/1849604278" target="_blank">Apple</a></div>
+          <div class="track-links"><a href="https://open.spotify.com/track/7EBjc5bkMWbp4MG1mgjUfR?si=c8b197ecfb0d4fbb" target="_blank" rel="noopener noreferrer">Spotify</a><a href="https://music.youtube.com/watch?v=e5irnUk3yMU&si=Pq1DE_Fhjn8t74VX" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://music.apple.com/us/song/chal-chal/1849604278" target="_blank" rel="noopener noreferrer">Apple</a></div>
         </div>
         <div class="track-row">
           <div class="track-idx">02</div>
           <div class="track-title">BODY BAG<span>Single · 2026</span></div>
-          <div class="track-links"><a href="https://open.spotify.com/track/0y3Q6ZSwQgG0UhwqyYJ3aK?si=dbe28bb2d6004032" target="_blank">Spotify</a><a href="https://music.youtube.com/watch?v=cx6hF5OM-EI&si=_OOvR1u-xRwVCqae" target="_blank">YouTube</a><a href="https://music.apple.com/us/song/body-bag/1875653538" target="_blank">Apple</a></div>
+          <div class="track-links"><a href="https://open.spotify.com/track/0y3Q6ZSwQgG0UhwqyYJ3aK?si=dbe28bb2d6004032" target="_blank" rel="noopener noreferrer">Spotify</a><a href="https://music.youtube.com/watch?v=cx6hF5OM-EI&si=_OOvR1u-xRwVCqae" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://music.apple.com/us/song/body-bag/1875653538" target="_blank" rel="noopener noreferrer">Apple</a></div>
         </div>
         <div class="track-row">
           <div class="track-idx">03</div>
           <div class="track-title">GANDI AADAT<span>Single · 2026</span></div>
-          <div class="track-links"><a href="https://open.spotify.com/track/6KBYVsOfNjBFLjGlGzsNvV?si=351159809928497e" target="_blank">Spotify</a><a href="https://music.youtube.com/watch?v=HhuEJZJw0ec&si=42oOHSpCb3BRJ6QW" target="_blank">YouTube</a><a href="https://music.apple.com/us/song/gandi-aadat/1889702909" target="_blank">Apple</a></div>
+          <div class="track-links"><a href="https://open.spotify.com/track/6KBYVsOfNjBFLjGlGzsNvV?si=351159809928497e" target="_blank" rel="noopener noreferrer">Spotify</a><a href="https://music.youtube.com/watch?v=HhuEJZJw0ec&si=42oOHSpCb3BRJ6QW" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://music.apple.com/us/song/gandi-aadat/1889702909" target="_blank" rel="noopener noreferrer">Apple</a></div>
         </div>
         <div class="track-row">
           <div class="track-idx">04</div>
           <div class="track-title">TAG TEAM<span>Single · 2025</span></div>
-          <div class="track-links"><a href="https://open.spotify.com/track/3DlYCtt7OXDaP9ATKW2CMF?si=22db43b697dc4a84" target="_blank">Spotify</a><a href="https://music.youtube.com/watch?v=vU0InhfKuKM&si=o4_No9BQgzrkSv0G" target="_blank">YouTube</a><a href="https://music.apple.com/us/song/tag-team/1858708279"  target="_blank">Apple</a></div>
+          <div class="track-links"><a href="https://open.spotify.com/track/3DlYCtt7OXDaP9ATKW2CMF?si=22db43b697dc4a84" target="_blank" rel="noopener noreferrer">Spotify</a><a href="https://music.youtube.com/watch?v=vU0InhfKuKM&si=o4_No9BQgzrkSv0G" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://music.apple.com/us/song/tag-team/1858708279" target="_blank" rel="noopener noreferrer">Apple</a></div>
         </div>
       </div>
     </div>
@@ -872,22 +866,22 @@
         </div>
       </div>
 
-      <!-- Demo track list - add your private links below -->
+      <!-- Demo track list -->
       <ul class="demo-list">
         <li class="demo-item">
           <div class="demo-idx">01</div>
           <div class="demo-title">Sanaktape : Vol 1<span>Side A · Demo Version</span></div>
-          <div class="demo-link"><a href="https://untitled.stream/library/project/VHfn79LrlddIiw5cRGZwd" target="_blank">▶ Private Link</a></div>
+          <div class="demo-link"><a href="https://untitled.stream/library/project/VHfn79LrlddIiw5cRGZwd" target="_blank" rel="noopener noreferrer">▶ Private Link</a></div>
         </li>
         <li class="demo-item">
           <div class="demo-idx">02</div>
           <div class="demo-title">Sanaktape : Vol 2<span>Side B · Demo Version</span></div>
-          <div class="demo-link"><a href="https://untitled.stream/library/project/f1bmOCR2w7787LMmZK2JQ" target="_blank">▶ Private Link</a></div>
+          <div class="demo-link"><a href="https://untitled.stream/library/project/f1bmOCR2w7787LMmZK2JQ" target="_blank" rel="noopener noreferrer">▶ Private Link</a></div>
         </li>
         <li class="demo-item">
           <div class="demo-idx">03</div>
           <div class="demo-title">Singles<span>All Singles · Demo Version</span></div>
-          <div class="demo-link"><a href="https://untitled.stream/library/project/SXFP3Rrfa546dllhyxsgB" target="_blank">▶ Private Link</a></div>
+          <div class="demo-link"><a href="https://untitled.stream/library/project/SXFP3Rrfa546dllhyxsgB" target="_blank" rel="noopener noreferrer">▶ Private Link</a></div>
         </li>
       </ul>
 
@@ -913,11 +907,9 @@
           </div>
         </div>
 
-        <!-- RIGHT: performance photo collage - replace src with your image -->
+        <!-- RIGHT: performance photo collage -->
         <div class="live-photo">
-          <img src="public/live collage.jpg" alt="Sanakpaar Live">
-          <!--<div class="live-photo-placeholder-icon">🎤</div>
-          <div class="live-photo-placeholder-text">Add performance collage</div> -->
+          <img src="public/live collage.jpg" alt="Sanakpaar Live" loading="lazy" decoding="async">
           <div class="photo-label">Sanakpaar - Live</div>
         </div>
 
@@ -940,10 +932,10 @@
       <div>
         <div class="clbl" style="margin-bottom:10px;">Follow</div>
         <div class="social-row">
-          <a href="https://www.instagram.com/sanakpaar" target="_blank">Instagram</a>
-          <a href="https://www.youtube.com/@Sanakpaar" target="_blank">YouTube</a>
-          <a href="https://open.spotify.com/artist/2Z3qUmTivTaWrKCjy4Y4Kb" target="_blank">Spotify</a>
-          <a href="https://www.x.com/sanakpaar" target="_blank">X / Twitter</a>
+          <a href="https://www.instagram.com/sanakpaar" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.youtube.com/@Sanakpaar" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://open.spotify.com/artist/2Z3qUmTivTaWrKCjy4Y4Kb" target="_blank" rel="noopener noreferrer">Spotify</a>
+          <a href="https://x.com/sanakpaar" target="_blank" rel="noopener noreferrer">X / Twitter</a>
         </div>
       </div>
     </div>
